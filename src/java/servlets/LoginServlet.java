@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.User;
 
 /**
  *
@@ -29,6 +30,16 @@ public class LoginServlet extends HttpServlet {
         3. if login() returns non-null value, store the username in serrion variable and redirect(NO FORWARD) the user to home url
         4. if authentication parameters are invalid, display appropriate error message, keeping textboxes filled in with
             what user had previously entered and forward user to login.jsp*/
+        
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        
+        if (username == null || username.equals("") || password == null || password.equals("")) {
+            User user = new User(username, password);
+            request.setAttribute("user", user);
+            getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
+        } else {
+            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        }
     }
-
 }

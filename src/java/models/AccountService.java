@@ -5,20 +5,29 @@
  */
 package models;
 
-import org.apache.catalina.User;
 
 /**
  *
  * @author naeun
  */
 public class AccountService {
-    public User login(String username, String password) { //the only one non-static method of this class)
+    
+    public User login(String username, String password) { //the only one non-static method of this class
         /*
         calidates the user and password
         if login is successful, return a user object with password set as null
         if login is not successful, return null
         */
+        User user;
+        
+        if (username.equals("abe") && password.equals("password")) {
+            user = new User(username, password);
+            return user;
+        } else if (username.equals("barb") && password.equals("password")){
+            user = new User(username, password);
+            return user;
+        } else {
         return null;
+        }
     }
-    
 }
