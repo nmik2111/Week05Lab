@@ -18,6 +18,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         //displays login form(login.jsp) and messages
         //responsible for logging out, parameter "logout" exitsts -> invalidate the session and display message
+        
         getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
